@@ -12,7 +12,7 @@ def idle(connection):
     if response == '+ idling\r\n':
         while connection.loop:
             resp = connection.readline()
-            uid, message = resp[2:-2].split(' ')
+            uid, message = resp[2:-2].split(' ', 1)
             yield uid, message
     else:
         raise Exception("IDLE not handled? : %s" % response)
